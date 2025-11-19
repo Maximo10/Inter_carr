@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<AnchorPane prefHeight="450" prefWidth="900" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="com.example.carre_inter.HelloController">
+
+    <!-- Carriles -->
+    <Rectangle height="12" layoutX="50" layoutY="100" style="-fx-fill: gray;" width="800" />
+    <Rectangle height="12" layoutX="50" layoutY="170" style="-fx-fill: gray;" width="800" />
+    <Rectangle height="12" layoutX="50" layoutY="240" style="-fx-fill: gray;" width="800" />
+    <Rectangle height="12" layoutX="50" layoutY="310" style="-fx-fill: gray;" width="800" />
+
+    <!-- Meta -->
+    <Rectangle height="280" layoutX="850" layoutY="70" style="-fx-fill: red;" width="10" />
+
+    <!-- Coches -->
+    <Label fx:id="car1" layoutX="50" layoutY="75" style="-fx-font-size: 20px;" text="Ferrari 🚗" />
+    <Label fx:id="car2" layoutX="50" layoutY="145" style="-fx-font-size: 20px;" text="Lamborghini 🏎" />
+    <Label fx:id="car3" layoutX="50" layoutY="215" style="-fx-font-size: 20px;" text="Porsche 🚙" />
+    <Label fx:id="car4" layoutX="50" layoutY="285" style="-fx-font-size: 20px;" text="McLaren 🚕" />
+
+    <!-- Botón para iniciar carrera -->
+    <Button fx:id="startButton" layoutX="50" layoutY="360" onAction="#iniciarCarrera" text="Iniciar Carrera" />
+
+    <!-- Podio -->
+    <Label fx:id="podioLabel" layoutX="200" layoutY="360" style="-fx-font-size: 16px;" text="" />
+</AnchorPane>
