@@ -1,0 +1,87 @@
+\documentclass[12pt]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage[section]{placeins}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks = true,
+    linkcolor = blue,
+    urlcolor = cyan
+}
+
+\geometry{a4paper, margin=2.5cm}
+
+\title{Documentación Práctica Hilos Coches - Interfaz}
+\author{Birhan Fdez Fdez}
+
+
+\begin{document}
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Introducción}
+
+Implementación de una interfaz gráfica para la simulación de carreras de coches usando \textbf{Threads} en Java.  
+Se ha añadido sincronización con \texttt{synchronized} para garantizar la correcta actualización del podio.
+
+\section{Estructura del Proyecto}
+
+La aplicación sigue el patrón MVC:
+
+\begin{itemize}
+    \item \textbf{Modelo:} \texttt{Coches} y \texttt{Grand\_Prix} contienen la lógica de la carrera, los hilos y el podio.
+    \item \textbf{Vista:} \texttt{hello-view.fxml} define los carriles, coches, meta, botón de inicio y podio.
+    \item \textbf{Controlador:} \texttt{HelloController} gestiona la interacción entre la vista y la lógica, mueve los coches y actualiza el podio.
+\end{itemize}
+
+\subsection{Clases principales}
+\begin{itemize}
+    \item \texttt{HelloController}: arranca la carrera, actualiza posiciones de los coches en la interfaz y muestra el podio.
+    \item \texttt{Coches}: cada coche es un hilo que calcula su avance, actualiza la posición en la UI y notifica al podio al terminar.
+    \item \texttt{Grand\_Prix}: mantiene la lista de llegada de los coches y actualiza el podio sincronizado para evitar conflictos entre hilos.
+\end{itemize}
+
+\section{Synchronize}
+
+Usamos \texttt{synchronized} para controlar el acceso al podio compartido:
+
+\begin{verbatim}
+// Clase Grand_Prix
+public synchronized void ver_podio(String nombre) {
+    Podio.add(nombre);
+    if (Podio.size() == 4) {
+        // Actualizar podio en UI
+        Platform.runLater(() -> podioLabel.setText(sb.toString()));
+        Podio.clear();
+    }
+}
+\end{verbatim}
+
+Esto asegura que cuando varios hilos intenten registrar llegada al mismo tiempo, no se produzcan errores de concurrencia.
+
+\section{Interfaz}
+
+El diseño se organiza en un \texttt{AnchorPane} con:
+
+\begin{itemize}
+    \item Cuatro carriles (\texttt{Rectangle})
+    \item Meta (\texttt{Rectangle rojo})
+    \item Etiquetas para los coches (\texttt{Label})
+    \item Botón de inicio de carrera (\texttt{Button})
+    \item Label para mostrar el podio (\texttt{Label})
+\end{itemize}
+
+Cada coche se mueve a lo largo del carril y la posición se actualiza en tiempo real usando \texttt{Platform.runLater}.
+
+\section{Recursos gráficos}
+
+Icono de coches y meta, se usan emojis integrados en Labels para representar los vehículos. 
+
+\end{document}

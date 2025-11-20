@@ -27,11 +27,11 @@ public class HelloController {
         startButton.setDisable(true); // desactivar botón mientras corre la carrera
         podioLabel.setText(""); // limpiar podio
 
-        Grand_Prix gp = new Grand_Prix(podioLabel);
+        Grand_Prix gran_premio = new Grand_Prix(podioLabel);
 
-        new Coches("Ferrari 🚗", 150, META, gp, this, 1).start();
-        new Coches("Lamborghini 🏎️", 180, META, gp, this, 2).start();
-        new Coches("Porsche 🚙", 160, META, gp, this, 3).start();
-        new Coches("McLaren 🚕", 170, META, gp, this, 4).start();
+        new Coches("Ferrari 🚗", 150, META, gran_premio, this, 1).start();
+        new Coches("Lamborghini 🏎️", 180, META, gran_premio, this, 2).start();
+        new Coches("Porsche 🚙", 160, META, gran_premio, this, 3).start();
+        new Coches("McLaren 🚕", 170, META, gran_premio, this, 4).start();
     }
 }

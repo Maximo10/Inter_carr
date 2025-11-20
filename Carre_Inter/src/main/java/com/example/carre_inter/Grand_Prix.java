@@ -7,8 +7,8 @@ import java.util.List;
 
 public class Grand_Prix {
 
-    private static final List<String> Podio = new ArrayList<>();
-    private final Label podioLabel;
+    private static List<String> Podio = new ArrayList<>();
+    private Label podioLabel;
 
     public Grand_Prix(Label podioLabel) {
         this.podioLabel = podioLabel;
@@ -21,7 +21,10 @@ public class Grand_Prix {
             StringBuilder sb = new StringBuilder("\nPodio:\n");
             for (int i = 0; i < Podio.size(); i++) {
                 String medalla = switch(i) {
-                    case 0 -> "🥇"; case 1 -> "🥈"; case 2 -> "🥉"; default -> "🏁";
+                    case 0 -> "🥇";
+                    case 1 -> "🥈";
+                    case 2 -> "🥉";
+                    default -> "🏁";
                 };
                 sb.append(medalla).append(" Posición ").append(i+1).append(": ").append(Podio.get(i)).append("\n");
             }
